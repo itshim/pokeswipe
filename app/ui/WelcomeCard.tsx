@@ -1,11 +1,8 @@
-import { redirect } from "next/navigation";
 import { getRandomId } from "../services/getRandomPokemon";
+import NextButton from "./NextButton";
 
 export default async function WelcomeCard() {
   const id = await getRandomId();
-  async function onStart() {
-    redirect(`/match/${id}`);
-  }
 
   return (
     <div
@@ -27,12 +24,7 @@ export default async function WelcomeCard() {
         Choose &quot;Like&quot; or &quot;Dislike&quot; and start building your
         own team
       </p>
-      <button
-        className="py-2 px-4 bg-blue-500 w-96 text-white font-semibold rounded-lg hover:bg-blue-600 transition absolute bottom-5"
-        onClick={onStart}
-      >
-        Lets Go
-      </button>
+      <NextButton id={id} />
     </div>
   );
 }

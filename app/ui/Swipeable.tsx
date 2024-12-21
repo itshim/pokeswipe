@@ -12,6 +12,7 @@ export interface TSwipeableProps extends TPageProps {
 const SwipeableCard = ({ children, params }: TSwipeableProps) => {
   const { id } = params;
   const handleSwipe = async (direction: "left" | "right") => {
+    "use server";
     if (direction === "left") {
       // move to next card
       updateLike(id.toString(), "dislike");

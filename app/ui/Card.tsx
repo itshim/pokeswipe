@@ -7,8 +7,15 @@ import { traitColors, typeColors, typeColorsText } from "../helpers/typeColors";
 import { TGeneralObject } from "../interfaces/Global";
 import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { TSwipeFn } from "./Swipeable";
 
-const Card = ({ user }: { user: TPokemon }) => {
+const Card = ({
+  user,
+  handleSwiper,
+}: {
+  user: TPokemon;
+  handleSwiper: TSwipeFn;
+}) => {
   console.log(user, "user");
 
   const style = useSpring({
@@ -22,8 +29,6 @@ const Card = ({ user }: { user: TPokemon }) => {
   const abilities = user.abilities.sort(sortWithSlot);
 
   const stats = user.stats;
-
-  function handleSwiper(param: "left" | "right") {}
 
   return (
     <div
@@ -67,13 +72,13 @@ const Card = ({ user }: { user: TPokemon }) => {
 
       {/* Buttons for swipe actions */}
       <button
-        className="text-4xl text-red-500 absolute left-2 top-1/2"
+        className="text-4xl text-white-500 absolute left-2 top-1/2"
         onClick={() => handleSwiper("left")}
       >
         <FontAwesomeIcon icon={faThumbsDown} />
       </button>
       <button
-        className="text-4xl text-green-500 absolute right-2 top-1/2"
+        className="text-4xl text-white-500 absolute right-2 top-1/2"
         onClick={() => handleSwiper("right")}
       >
         <FontAwesomeIcon icon={faThumbsUp} />

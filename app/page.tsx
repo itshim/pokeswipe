@@ -8,9 +8,7 @@ export default async function Home({ params }: TPageProps) {
   if (!user) return;
   return (
     <div>
-      <SwipeableCard params={params}>
-        {(swiperFn) => <WelcomeCard handleSwiper={swiperFn} />}
-      </SwipeableCard>
+      <SwipeableCard params={params}>{() => <WelcomeCard />}</SwipeableCard>
     </div>
   );
 }
